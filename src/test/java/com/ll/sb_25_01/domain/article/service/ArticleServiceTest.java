@@ -24,7 +24,7 @@ public class ArticleServiceTest {
     @DisplayName("글 작성")
     @Test
     void t1() {
-        RsData<Article> writeRs = articleService.write("제목1", "내용1");
+        RsData<Article> writeRs = articleService.write(1, "제목1", "내용1");
         Article article = writeRs.getData();
         assertThat(article.getId()).isGreaterThan(0L);  // 검증 코드; 검증되면 테스트 통과, 되지않으면 테스트 실패가 된다.
     }
