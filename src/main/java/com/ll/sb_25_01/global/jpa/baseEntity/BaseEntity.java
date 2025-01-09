@@ -26,4 +26,6 @@ public class BaseEntity {
     @GeneratedValue(strategy = IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
+    private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
 }

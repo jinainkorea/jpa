@@ -14,8 +14,6 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Setter
 public class Member extends BaseEntity {
-    private LocalDateTime createDate;
-    private LocalDateTime modifyDate;
     private String username;
     private String password;
 }
