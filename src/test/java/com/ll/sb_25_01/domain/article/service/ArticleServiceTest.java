@@ -36,9 +36,8 @@ public class ArticleServiceTest {
     @Test
     void t2() {
         Article article = articleService.findById(1L).get();
-        long authorId = article.getAuthorId();
 
-        Member member = memberService.findById(authorId).get();
+        Member member = article.getAuthor();
 
         assertThat(member.getUsername()).isEqualTo("user1");  // 검증 코드; 검증되면 테스트 통과, 되지않으면 테스트 실패가 된다.
     }

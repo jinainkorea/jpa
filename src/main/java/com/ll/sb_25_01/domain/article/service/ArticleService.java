@@ -2,6 +2,7 @@ package com.ll.sb_25_01.domain.article.service;
 
 import com.ll.sb_25_01.domain.article.entity.Article;
 import com.ll.sb_25_01.domain.article.repository.ArticleRepository;
+import com.ll.sb_25_01.domain.member.entity.Member;
 import com.ll.sb_25_01.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class ArticleService {
     public RsData<Article> write(long authorId, String title, String body) {
         Article article = Article.builder()
                 .title(title)
-                .authorId(authorId)
+                .author(Member.builder().id(authorId).build())
                 .body(body)
                 .build();
         articleRepository.save(article);
