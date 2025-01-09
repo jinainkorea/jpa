@@ -21,11 +21,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArticleServiceTest {
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private MemberService memberService;
+
     @DisplayName("글 작성")
     @Test
     void t1() {
         RsData<Article> writeRs = articleService.write(1, "제목1", "내용1");
         Article article = writeRs.getData();
         assertThat(article.getId()).isGreaterThan(0L);  // 검증 코드; 검증되면 테스트 통과, 되지않으면 테스트 실패가 된다.
+    }
+
+    @DisplayName("1번 글 작성자는 user1")
+    @Test
+    void t2() {
+        Article article = articleService.findById(1L).get();
+        long authorId = article.getAuthorId();
+
+        Member member = memberService.findById(authorId).get();
+
+        assertThat(member.getUsername()).isEqualTo("user1");  // 검증 코드; 검증되면 테스트 통과, 되지않으면 테스트 실패가 된다.
     }
 }
