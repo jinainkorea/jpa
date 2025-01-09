@@ -32,9 +32,17 @@ public class ArticleServiceTest {
         assertThat(article.getId()).isGreaterThan(0L);  // 검증 코드; 검증되면 테스트 통과, 되지않으면 테스트 실패가 된다.
     }
 
-    @DisplayName("1번 글 작성자는 user1")
+    @DisplayName("1번 글 제목 가져오기")
     @Test
     void t2() {
+        Article article = articleService.findById(1L).get();
+
+        assertThat(article.getTitle()).isEqualTo("제목1");  // 검증 코드; 검증되면 테스트 통과, 되지않으면 테스트 실패가 된다.
+    }
+
+    @DisplayName("1번 글 작성자는 user1")
+    @Test
+    void t3() {
         Article article = articleService.findById(1L).get();
 
         Member member = article.getAuthor();
